@@ -14,7 +14,7 @@ const Nav = () => {
           <Link to="/">Menu</Link>
         </li>
         <li>
-          <Link to="/booking">Reservations</Link>
+          <Link to="/reservation">Reservations</Link>
         </li>
         <li>
           <Link to="/">Order Online</Link>

@@ -1,6 +1,7 @@
 import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage';
 import BookingPage from './pages/BookingPage';
+import ConfirmedBookingPage from './pages/ConfirmedBookingPage';
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -13,7 +14,8 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="/booking" element={<BookingPage />} />
+        <Route path="/reservation" element={<BookingPage />} />
+        <Route path="/confirmed" element={<ConfirmedBookingPage />} />
       </Route>
     )
   );

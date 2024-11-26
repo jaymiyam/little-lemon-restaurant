@@ -14,8 +14,7 @@ img {
 }
 
 a:link,
-a:visited,
-button {
+a:visited {
   text-decoration: none;
   color: var(--clr-off-black);
   font-weight: 600;
@@ -198,6 +197,26 @@ nav > ul {
   grid-row: 2 / 4;
 }
 
+/* reservation form */
+.form-section {
+  background-color: var(--clr-green);
+  padding-bottom: 2rem;
+}
+.reservation-form {
+  background-color: var(--clr-off-wfite);
+  border-radius: 1rem;
+  padding: 1rem;
+  max-width: 500px;
+}
+
+.form-group {
+  padding: 1rem;
+}
+
+footer {
+  background-color: var(--clr-off-wfite);
+}
+
 /* utility */
 
 .flex-between {
@@ -227,10 +246,20 @@ nav > ul {
 }
 
 .button {
+  cursor: pointer;
+  border: none;
   display: inline-block;
   background-color: var(--clr-yellow);
+  color: var(--clr-off-black);
+  font-weight: 600;
   padding: 1rem 1.5rem;
   border-radius: 1rem;
+  transition: all 0.2s ease-out;
+}
+
+.button:hover {
+  background-color: var(--clr-off-black);
+  color: white;
 }
 
 :where(.flow > :not(:first-child)) {
