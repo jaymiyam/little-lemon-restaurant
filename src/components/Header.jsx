@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className>
+    <header>
       <div className="container flex-between">
         <Link to="/">
           <img src="src/assets/logo-little-lemon.svg" className="logo-img" />

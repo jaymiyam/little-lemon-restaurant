@@ -213,6 +213,10 @@ nav > ul {
   padding: 1rem;
 }
 
+.error-message {
+  color: red;
+}
+
 footer {
   background-color: var(--clr-off-wfite);
 }

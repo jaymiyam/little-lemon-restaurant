@@ -2,10 +2,13 @@
 import { useState } from 'react';
 
 const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
+  const currentDate = new Date();
+
   const [date, setDate] = useState('');
   const [time, setTime] = useState('1700');
   const [guest, setGuest] = useState(1);
   const [occasion, setOccasion] = useState('Birthday');
+  const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +19,21 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
       guest,
       occasion,
     };
+
+    if (new Date(date) < currentDate) {
+      setError('Date cannot be in the past!');
+      return;
+    }
+
     submitForm(newReservation);
+  };
+
+  const validateDate = (date) => {
+    if (new Date(date) < currentDate) {
+      setError('Date cannot be in the past!');
+    } else {
+      setError('');
+    }
   };
 
   const handleDateChange = (date) => {
@@ -28,6 +45,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
     <section className="form-section">
       <div className="container">
         <form className="reservation-form" onSubmit={handleSubmit}>
+          <p className="error-message">{error}</p>
           <div className="form-group">
             <label htmlFor="res-date">Choose Date: </label>
             <input
@@ -36,6 +54,8 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
               id="res-date"
               value={date}
               onChange={(e) => handleDateChange(e.target.value)}
+              onBlur={(e) => validateDate(e.target.value)}
+              required
             />
           </div>
           <div className="form-group">
@@ -45,6 +65,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
               id="res-time"
               value={time}
               onChange={(e) => setTime(e.target.value)}
+              required
             >
               {availableTimes.map((time, index) => {
                 return (
@@ -65,6 +86,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
               max="10"
               value={guest}
               onChange={(e) => setGuest(e.target.value)}
+              required
             />
           </div>
           <div className="form-group">
@@ -74,16 +96,19 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
               id="res-occasion"
               value={occasion}
               onChange={(e) => setOccasion(e.target.value)}
+              required
             >
               <option value="birthday">Birthday</option>
               <option value="engagement">Engagement</option>
               <option value="anniversary">Anniversary</option>
+              <option value="other">Other</option>
             </select>
           </div>
           <input
             className="button"
             type="submit"
             value="Make your reservation"
+            aria-label="On Click"
           />
         </form>
       </div>
